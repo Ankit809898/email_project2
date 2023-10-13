@@ -22,7 +22,7 @@ class EmailAttachmentView(View):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
-            files = form.cleaned_data['attach']
+            files = request.FILES.getlist('attach')
 
             try:
                 email_msg = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [email])
